@@ -9,8 +9,11 @@ MOD_EXT := .ko
 
 KDIR := /lib/modules/$(shell uname -r)/build
 
+SRCS := $(wildcard $(PWD)/$(SRC_DIR)*.c)
+OBJS := $(patsubst $(PWD)/$(SRC_DIR)%.c, $(SRC_DIR)%.o, $(SRCS))
+
 obj-m := $(OBJ_DIR)$(TARGET).o
-$(OBJ_DIR)$(TARGET)-objs := $(SRC_DIR)$(TARGET).o
+$(OBJ_DIR)$(TARGET)-objs := $(OBJS)
 
 .PHONY: all clean install dir rdir
 

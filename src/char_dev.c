@@ -1,21 +1,29 @@
-#include <linux/module.h>
-#include <linux/init.h>
+#include "char_dev.h"
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Aleksei Karasev");
-MODULE_DESCRIPTION("Character device driver");
-
-static int __init module_upload(void)
+int char_dev_open(struct inode *pinode, struct file *pfile)
 {
 	printk(KERN_ALERT "Function %s is being executed\n", __FUNCTION__);
 
 	return 0;
 }
 
-static void __exit module_extract(void)
+ssize_t char_dev_read(struct file *pfile, char __user *buffer, size_t length, loff_t *offest)
 {
 	printk(KERN_ALERT "Function %s is being executed\n", __FUNCTION__);
+
+	return 0;
 }
 
-module_init(module_upload);
-module_exit(module_extract);
+ssize_t char_dev_write(struct file *pfile, const char __user *buffer, size_t length, loff_t *offest)
+{
+	printk(KERN_ALERT "Function %s is being executed\n", __FUNCTION__);
+
+	return length;
+}
+
+int char_dev_release(struct inode *pinode, struct file *pfile)
+{
+	printk(KERN_ALERT "Function %s is being executed\n", __FUNCTION__);
+
+	return 0;
+}
