@@ -12,7 +12,7 @@ KDIR := /lib/modules/$(shell uname -r)/build
 obj-m := $(OBJ_DIR)$(TARGET).o
 $(OBJ_DIR)$(TARGET)-objs := $(SRC_DIR)$(TARGET).o
 
-.PHONY: all install dir rdir clean
+.PHONY: all clean install dir rdir
 
 all: dir $(TARGET) install
 
