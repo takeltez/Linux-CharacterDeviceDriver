@@ -20,10 +20,10 @@ $(OBJ_DIR)$(TARGET)-objs := $(OBJS)
 all: dir $(TARGET) install
 
 $(TARGET):
-	make -C $(KDIR) M=$(PWD)/$(BUILD_DIR) src=$(PWD) modules
+	$(MAKE) -C $(KDIR) M=$(PWD)/$(BUILD_DIR) src=$(PWD) modules
 
 clean:
-	make -C $(KDIR) M=$(PWD)/$(BUILD_DIR) src=$(PWD) clean
+	$(MAKE) -C $(KDIR) M=$(PWD)/$(BUILD_DIR) src=$(PWD) clean
 	rm -f $(MOD_DIR)$(TARGET)$(MOD_EXT)
 	rm -rf $(BUILD_DIR)*
 

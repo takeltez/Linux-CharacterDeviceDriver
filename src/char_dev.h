@@ -7,14 +7,17 @@
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Aleksei Karasev");
-MODULE_DESCRIPTION("Character device driver: char_dev_ops");
+MODULE_DESCRIPTION("Character device driver");
+
+extern char k_buf[100];
+extern struct file_operations char_dev_ops;
+
+int payload_length(char *buf);
 
 int char_dev_open(struct inode *pinode, struct file *pfile);
-
 int char_dev_release(struct inode *pinode, struct file *pfile);
 
 ssize_t char_dev_read(struct file *pfile, char __user *buffer, size_t length, loff_t *offest);
-
 ssize_t char_dev_write(struct file *pfile, const char __user *buffer, size_t length, loff_t *offest);
 
 #endif
